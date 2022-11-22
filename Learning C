@@ -1,0 +1,8 @@
+#this is for printing character with the index of strings used
+#include<stdio.h>
+#include<conio.h>
+int main() {
+clrscr();
+    printf("%d", printf("%s", "hello world"));
+    getch();
+ }
