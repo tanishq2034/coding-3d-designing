@@ -1,0 +1,9 @@
+#include<stdio.h>
+#include<conio.h>
+main() {
+char c= 255;
+c= c+10;
+clrscr();
+printf("%d",c);
+getch();
+}
