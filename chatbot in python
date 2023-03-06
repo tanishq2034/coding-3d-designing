@@ -1,0 +1,36 @@
+import random
+
+# Define some responses for the chatbot
+responses = {
+    "hello": ["Hello!", "Hi there!", "Hey!"],
+    "how are you": ["I'm doing well, thank you.", "I'm fine, thanks for asking.", "Not too bad, how about you?"],
+    "bye": ["Goodbye!", "See you later!", "Bye!"]
+}
+
+# Define a function to handle the user's input and generate a response
+def respond(input_text):
+    # Convert the input to lowercase for easier processing
+    input_text = input_text.lower()
+    
+    # Look for a matching response in the dictionary
+    for key in responses:
+        if input_text.find(key) != -1:
+            return random.choice(responses[key])
+    
+    # If no matching response was found, respond with a default message
+    return "I'm sorry, I didn't understand what you said."
+
+# Define the main loop of the chatbot
+while True:
+    # Get input from the user
+    user_input = input("You: ")
+    
+    # Generate a response from the chatbot
+    bot_response = respond(user_input)
+    
+    # Print the chatbot's response
+    print("Bot: " + bot_response)
+    
+    # If the user says "bye", exit the loop and end the chatbot
+    if user_input.lower() == "bye":
+        break
