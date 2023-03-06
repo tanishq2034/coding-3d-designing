@@ -1,0 +1,35 @@
+import speech_recognition as sr
+from gtts import gTTS
+import os
+import mpg123
+def get_audio():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Speak now...")
+        audio = r.listen(source)
+        try:
+            text = r.recognize_google(audio)
+            print("You said: {}".format(text))
+            return text
+        except:
+            print("Sorry, I did not understand.")
+            return ""
+def speak(text):
+    tts = gTTS(text=text, lang='en')
+    filename = 'temp.mp3'
+    tts.save(filename)
+    os.system('mpg123 ' + filename)
+    os.remove(filename)
+while True:
+    text = get_audio()
+    if "hello" in text.lower():
+        speak("Hello, how can I help you?")
+    elif "what is your name" in text.lower():
+        speak("My name is Chatbot.")
+    elif "how are you" in text.lower():
+        speak("I'm fine, thank you.")
+    elif "bye" in text.lower():
+        speak("Goodbye!")
+        break
+    else:
+        speak("Sorry, I did not understand.")
